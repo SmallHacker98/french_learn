@@ -3,48 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Link French v1.1</title>
+    <title>Link French v1.0</title>
     
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#EF4135">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐓</text></svg>">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇫🇷</text></svg>">
     <link rel="manifest" id="my-manifest">
 
     <style>
-        /* --- Base Styles --- */
+        /* --- Base Styles (Theme: Tricolore Blue/Red) --- */
         :root {
-            --primary: #002395; /* French Blue */
+            --primary: #0055A4; /* French Blue */
             --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --subtext: #64748b;
-            --border: #e2e8f0; --accent: #ed2939; /* French Red */
+            --border: #e2e8f0; --accent: #EF4135; /* French Red */
             --danger: #ef4444; --success: #10b981;
-            /* Categories */
-            --cat-bus: #dbeafe; --cat-bus-t: #1e40af; 
-            --cat-day: #dcfce7; --cat-day-t: #166534;
-            --cat-trv: #fce7f3; --cat-trv-t: #9d174d; 
-            --cat-gram: #ffedd5; --cat-gram-t: #9a3412;
-            
+            --cat-bus: #dbeafe; --cat-bus-t: #1e40af; --cat-day: #dcfce7; --cat-day-t: #166534;
+            --cat-trv: #fce7f3; --cat-trv-t: #9d174d; --cat-base: #ffedd5; --cat-base-t: #9a3412;
             --status-done: #dcfce7; --status-done-t: #166534;
-            --tab-active-bg: #eff6ff; --tab-active-t: #002395;
+            --tab-active-bg: #eff6ff; --tab-active-t: #0055A4;
         }
         [data-theme="dark"] {
             --primary: #60a5fa; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --subtext: #94a3b8;
-            --border: #334155; --accent: #f87171;
-            --cat-bus: #1e3a8a; --cat-bus-t: #dbeafe; 
-            --cat-day: #14532d; --cat-day-t: #dcfce7;
-            --cat-trv: #831843; --cat-trv-t: #fce7f3; 
-            --cat-gram: #7c2d12; --cat-gram-t: #ffedd5;
+            --border: #334155; --cat-bus: #1e3a8a; --cat-bus-t: #dbeafe; --cat-day: #14532d; --cat-day-t: #dcfce7;
+            --cat-trv: #831843; --cat-trv-t: #fce7f3; --cat-base: #7c2d12; --cat-base-t: #ffedd5;
             --status-done: #064e3b; --status-done-t: #6ee7b7;
             --tab-active-bg: #1e293b; --tab-active-t: #60a5fa;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; overscroll-behavior: none; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; overscroll-behavior: none; }
         
         header { background-color: var(--card); border-bottom: 1px solid var(--border); padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; padding-top: env(safe-area-inset-top); z-index: 10;}
-        .app-title { font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap:5px;}
+        .app-title { font-weight: bold; font-size: 1.1rem; }
         .theme-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
         
         .bottom-nav { display: flex; background: var(--card); border-top: 1px solid var(--border); padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-        .nav-item { flex: 1; padding: 12px; text-align: center; font-size: 0.8rem; color: var(--subtext); cursor: pointer; border-top: 3px solid transparent; }
+        .nav-item { flex: 1; padding: 12px; text-align: center; font-size: 0.7rem; color: var(--subtext); cursor: pointer; border-top: 3px solid transparent; }
         .nav-item.active { color: var(--primary); border-top-color: var(--primary); font-weight: bold; }
         .nav-icon { display: block; font-size: 1.4rem; margin-bottom: 2px; }
 
@@ -54,9 +47,8 @@
         .btn { background-color: var(--primary); color: white; border: none; padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 5px; width: 100%; box-sizing: border-box; font-weight: 600; }
         .btn:active { opacity: 0.9; transform: scale(0.98); }
         .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
-        .btn-danger-outline { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
-        .btn-success { background-color: var(--success); color: white; }
         .btn-accent { background-color: var(--accent); color: #fff; }
+        .btn-success { background-color: var(--success); color: white; }
 
         .list-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); cursor: pointer; background: var(--card); margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border); }
         .list-content { flex: 1; }
@@ -65,7 +57,7 @@
         .cat-tag { padding: 2px 8px; border-radius: 10px; font-weight: 600; font-size: 0.75rem; }
         .level-tag { font-size: 0.7rem; padding: 1px 6px; border: 1px solid var(--border); border-radius: 4px; color: var(--subtext); }
         .cat-Business { background: var(--cat-bus); color: var(--cat-bus-t); } .cat-Daily { background: var(--cat-day); color: var(--cat-day-t); }
-        .cat-Travel { background: var(--cat-trv); color: var(--cat-trv-t); } .cat-Grammar { background: var(--cat-gram); color: var(--cat-gram-t); }
+        .cat-Travel { background: var(--cat-trv); color: var(--cat-trv-t); } .cat-Basic { background: var(--cat-base); color: var(--cat-base-t); }
         .progress-badges { display: flex; gap: 5px; margin-left: auto; }
         .p-badge { font-size: 0.8rem; padding: 3px 6px; border-radius: 4px; background: var(--border); color: var(--subtext); opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
         .p-badge.done { background: var(--status-done); color: var(--status-done-t); opacity: 1; filter: grayscale(0%); font-weight: bold; border: 1px solid var(--status-done-t); }
@@ -77,9 +69,8 @@
         
         .lesson-content { display: none; animation: fadeIn 0.3s ease; }
         .lesson-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .text-fr { font-size: 1.2rem; line-height: 1.6; margin: 15px 0; white-space: pre-wrap; font-style: italic; font-family: "Georgia", serif; }
+        .text-fr { font-size: 1.2rem; line-height: 1.6; margin: 15px 0; white-space: pre-wrap; }
         .text-jp { color: var(--subtext); font-size: 0.95rem; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
         .chunk-view { line-height: 2; font-size: 1.1rem; } .chunk-sep { color: var(--subtext); opacity: 0.3; margin: 0 4px; }
         
@@ -89,21 +80,24 @@
         .btn-mic { background: var(--bg); border: 1px solid var(--subtext); color: var(--text); }
         .btn-mic.listening { background: var(--danger); color: white; border-color: var(--danger); animation: pulse 1.5s infinite; }
         .score-box { margin-top: 10px; padding: 10px; background: var(--bg); border-radius: 6px; font-size: 0.9rem; }
+        .word-ok { color: var(--success); font-weight: bold; }
+        .word-miss { color: var(--danger); text-decoration: line-through; opacity: 0.6; }
 
-        .slider-container { display: flex; align-items: center; padding: 5px; background: var(--bg); border-radius: 8px; margin-bottom: 10px; }
         input[type=range] { flex: 1; margin: 0 10px; }
         .form-row { display: flex; gap: 10px; margin-bottom: 10px; }
         .form-col { flex: 1; }
         label { font-size: 0.75rem; color: var(--subtext); font-weight: bold; display: block; margin-bottom: 3px; }
         textarea, input[type=text], input[type=number], select { width: 100%; padding: 8px; border-radius: 6px; background: var(--bg); color: var(--text); border: 1px solid var(--border); box-sizing: border-box; }
         textarea { height: 80px; resize: vertical; }
+
         .hidden { display: none !important; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="app-title">🇫🇷 Link French v1.1</div>
+    <div class="app-title">Link French v1.0</div>
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 </header>
 
@@ -113,63 +107,56 @@
     <div class="nav-item active" id="nav-list" onclick="setMode('list')">
         <span class="nav-icon">📂</span>List
     </div>
+    <div class="nav-item" id="nav-test" onclick="startTest()">
+        <span class="nav-icon">🎯</span>Test
+    </div>
     <div class="nav-item" id="nav-config" onclick="setMode('settings')">
         <span class="nav-icon">⚙️</span>Config
     </div>
 </div>
 
 <script>
-const manifest = { "name": "Link French", "short_name": "LinkFr", "start_url": ".", "display": "standalone", "background_color": "#f8fafc", "theme_color": "#002395", "icons": [{ "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐓</text></svg>", "sizes": "512x512", "type": "image/svg+xml" }] };
+// --- SERVICE WORKER ---
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed', err));
+    });
+}
+
+// --- CORE ---
+const manifest = { "name": "Link French", "short_name": "LinkFr", "start_url": ".", "display": "standalone", "background_color": "#f8fafc", "theme_color": "#0055A4", "icons": [{ "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇫🇷</text></svg>", "sizes": "512x512", "type": "image/svg+xml" }] };
 document.getElementById('my-manifest').setAttribute('href', 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest)));
 
-// --- FRENCH DEFAULT DATA ---
+// フランス語のデフォルトデータ
 const defaultData = [
   { 
-      "id": "f1", "category": "Daily", "level": "Beginner",
+      "id": "fr1", "category": "Basic", "level": "Beginner",
       "progress": { "listen": false, "speak": false },
       "commute_content": { 
-          "french_text": "Bonjour, je voudrais une baguette tradition et deux croissants, s'il vous plaît.", 
-          "japanese_translation": "こんにちは、トラディション（バゲット）1本とクロワッサンを2つお願いします。", 
-          "chunks": "Bonjour, / je voudrais / une baguette tradition / et deux croissants, / s'il vous plaît.", 
-          "summary": "パン屋での注文", 
-          "vocabulary": [{ "word": "je voudrais", "meaning": "〜が欲しいのですが" }, { "word": "croissant", "meaning": "クロワッサン" }] 
+          "french_text": "Je voudrais un café, s'il vous plaît. Et aussi un croissant.", 
+          "japanese_translation": "コーヒーを1つお願いします。あとクロワッサンも。", 
+          "chunks": "Je voudrais / un café, / s'il vous plaît. / Et aussi / un croissant.", 
+          "summary": "カフェでの注文", 
+          "vocabulary": [{ "word": "Je voudrais", "meaning": "〜が欲しいのですが" }, { "word": "s'il vous plaît", "meaning": "お願いします" }] 
       }, 
       "home_content": { 
-          "pattern_focus": "Je voudrais...", 
-          "pattern_explanation": "「〜が欲しいのですが」と丁寧に頼む定番フレーズ。", 
-          "drills": [{ "japanese": "コーヒーを一杯お願いします。", "french": "Je voudrais un café." }, { "japanese": "この本が欲しいのですが。", "french": "Je voudrais ce livre." }] 
+          "pattern_focus": "Je voudrais...", "pattern_explanation": "「〜が欲しい」と丁寧に伝える表現。", 
+          "drills": [{ "japanese": "お水をお願いします。", "french": "Je voudrais de l'eau, s'il vous plaît." }, { "japanese": "メニューをいただけますか？", "french": "Je voudrais le menu." }] 
       } 
   },
   { 
-      "id": "f2", "category": "Travel", "level": "Intermediate",
+      "id": "fr2", "category": "Travel", "level": "Beginner",
       "progress": { "listen": false, "speak": false },
       "commute_content": { 
-          "french_text": "Excusez-moi, pour aller à la Tour Eiffel, c'est par où ?", 
-          "japanese_translation": "すみません、エッフェル塔へはどう行けばいいですか？", 
-          "chunks": "Excusez-moi, / pour aller / à la Tour Eiffel, / c'est par où ?", 
-          "summary": "道を尋ねる", 
-          "vocabulary": [{ "word": "pour aller à", "meaning": "〜へ行くために" }, { "word": "par où", "meaning": "どの道・どちらへ" }] 
+          "french_text": "Excusez-moi, où est la station de métro la plus proche ?", 
+          "japanese_translation": "すみません、一番近い地下鉄の駅はどこですか？", 
+          "chunks": "Excusez-moi, / où est / la station de métro / la plus proche ?", 
+          "summary": "道を聞く", 
+          "vocabulary": [{ "word": "où est", "meaning": "〜はどこですか" }, { "word": "proche", "meaning": "近い" }] 
       }, 
       "home_content": { 
-          "pattern_focus": "C'est par où ?", 
-          "pattern_explanation": "「（〜への道は）どちらですか？」と方向を尋ねる。", 
-          "drills": [{ "japanese": "駅はどちらですか？", "french": "Pour aller à la gare, c'est par où ?" }, { "japanese": "出口はどこですか？", "french": "La sortie, c'est par où ?" }] 
-      } 
-  },
-  { 
-      "id": "f3", "category": "Business", "level": "Advanced",
-      "progress": { "listen": false, "speak": false },
-      "commute_content": { 
-          "french_text": "Nous devons trouver une solution avant la réunion de demain matin.", 
-          "japanese_translation": "明日の朝の会議までに解決策を見つけなければなりません。", 
-          "chunks": "Nous devons / trouver une solution / avant la réunion / de demain matin.", 
-          "summary": "会議前の課題", 
-          "vocabulary": [{ "word": "devoir", "meaning": "〜しなければならない" }, { "word": "réunion", "meaning": "会議" }] 
-      }, 
-      "home_content": { 
-          "pattern_focus": "Nous devons...", 
-          "pattern_explanation": "「私たちは〜しなければならない」という義務。", 
-          "drills": [{ "japanese": "私たちは契約に署名しなければならない。", "french": "Nous devons signer le contrat." }, { "japanese": "結果を分析する必要がある。", "french": "Nous devons analyser les résultats." }] 
+          "pattern_focus": "Où est...?", "pattern_explanation": "場所を尋ねる基本フレーズ。", 
+          "drills": [{ "japanese": "トイレはどこですか？", "french": "Où sont les toilettes ?" }, { "japanese": "出口はどこですか？", "french": "Où est la sortie ?" }] 
       } 
   }
 ];
@@ -177,416 +164,262 @@ const defaultData = [
 let state = { 
     data: [], currentIndex: 0, mode: 'list', lessonTab: 'commute',
     theme: 'light', showText: false, selectedVoiceIndex: -1, voiceRate: 1.0, 
-    isLooping: false, promptTopic: "General", promptMode: "standard", promptLevel: "Intermediate", promptQty: 3 
+    isLooping: false, promptTopic: "Travel", promptLevel: "Beginner", promptQty: 3,
+    testQueue: [], testIndex: 0 
 };
 let voices = [], loopInterval = null, recognition = null;
 
 function init() {
-    const savedData = localStorage.getItem('lf_data');
-    if (savedData) {
-        state.data = JSON.parse(savedData);
-        state.data.forEach(d => { if(!d.progress) d.progress = {listen:false, speak:false}; });
-    } else {
-        state.data = defaultData;
-    }
+    const savedData = localStorage.getItem('lf_data'); // Key変更: lf_data
+    state.data = savedData ? JSON.parse(savedData) : defaultData;
+    if (state.data.length > 0) state.data.forEach(d => { if(!d.progress) d.progress = {listen:false, speak:false}; });
     
-    const restore = (k, t) => { const v = localStorage.getItem(k); if(v) state[t] = t==='s' ? v : parseFloat(v); };
+    const restore = (k, t) => { const v = localStorage.getItem(k); if(v) state[t] = (t==='theme' || t==='selectedVoiceIndex') ? v : parseFloat(v); };
     restore('lf_theme', 'theme'); restore('lf_voice_index', 'selectedVoiceIndex'); restore('lf_voice_rate', 'voiceRate');
     
     if (state.theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         recognition = new SpeechRecognition(); 
-        recognition.lang = 'fr-FR'; 
-        recognition.continuous = false; recognition.interimResults = false;
+        recognition.lang = 'fr-FR'; // フランス語設定
     }
-    
-    // Voice Loading Logic - Improved
-    window.speechSynthesis.onvoiceschanged = loadVoices; 
-    loadVoices(); // Try immediately too
+    window.speechSynthesis.onvoiceschanged = loadVoices; loadVoices(); 
     render();
 }
 
 function loadVoices() {
     voices = window.speechSynthesis.getVoices(); 
-    if (!voices.length) return;
-
-    // Force re-selection if current selection is invalid or not set
-    if (state.selectedVoiceIndex === -1 || !voices[state.selectedVoiceIndex]) {
-        // Priority: 1. "Google" + "fr-FR" (Best quality), 2. Any "fr-FR", 3. Any "fr"
-        let idx = voices.findIndex(v => v.lang === 'fr-FR' && v.name.includes('Google'));
-        if (idx === -1) idx = voices.findIndex(v => v.lang === 'fr-FR');
-        if (idx === -1) idx = voices.findIndex(v => v.lang.startsWith('fr'));
-        
-        if (idx !== -1) { 
-            state.selectedVoiceIndex = idx; 
-            localStorage.setItem('lf_voice_index', idx); 
-        } else {
-            console.warn("No French voice found.");
-        }
+    if (state.selectedVoiceIndex === -1 && voices.length) {
+        // フランス語の音声を探す
+        let idx = voices.findIndex(v => v.lang.startsWith("fr"));
+        if (idx !== -1) state.selectedVoiceIndex = idx;
     }
-    render(); // Update config UI to show loaded voice
 }
 
-function setMode(m) { 
-    state.mode = m; 
-    stopAudio(); 
-    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    if(m === 'list') document.getElementById('nav-list').classList.add('active');
-    if(m === 'settings') document.getElementById('nav-config').classList.add('active');
-    render(); 
-}
-
-function openLesson(index) {
-    state.currentIndex = index;
-    state.mode = 'lesson';
-    state.lessonTab = 'commute';
-    state.showText = false;
-    stopAudio();
-    render();
-}
-
-function setLessonTab(tab) {
-    state.lessonTab = tab;
-    stopAudio();
-    render();
-}
-
-function toggleTheme() { 
-    state.theme = state.theme === 'light' ? 'dark' : 'light'; 
-    document.documentElement.setAttribute('data-theme', state.theme); 
-    localStorage.setItem('lf_theme', state.theme); 
-    render(); 
-}
-
-function toggleProgress(type) {
-    const item = state.data[state.currentIndex];
-    item.progress[type] = !item.progress[type];
-    saveData();
-    render();
-}
+// --- NAVIGATION ---
+function setMode(m) { state.mode = m; stopAudio(); render(); }
+function openLesson(i) { state.currentIndex = i; state.mode = 'lesson'; state.lessonTab = 'commute'; state.showText = false; stopAudio(); render(); }
+function setLessonTab(t) { state.lessonTab = t; stopAudio(); render(); }
+function toggleTheme() { state.theme = state.theme === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', state.theme); localStorage.setItem('lf_theme', state.theme); render(); }
+function toggleProgress(type) { state.data[state.currentIndex].progress[type] = !state.data[state.currentIndex].progress[type]; saveData(); render(); }
 function saveData() { localStorage.setItem('lf_data', JSON.stringify(state.data)); }
 
+// --- AUDIO & SPEECH ---
 function speak(txt) { 
     window.speechSynthesis.cancel(); 
     const u = new SpeechSynthesisUtterance(txt); 
-    u.lang = 'fr-FR'; // Default lang
-    
-    // Robust Voice Selection
-    if (voices[state.selectedVoiceIndex]) {
-        u.voice = voices[state.selectedVoiceIndex];
-    } else {
-        // Fallback: try to find ANY French voice on the fly
-        const frVoice = voices.find(v => v.lang.startsWith('fr'));
-        if (frVoice) u.voice = frVoice;
-    }
-
+    u.lang = 'fr-FR'; // フランス語設定
+    if (voices[state.selectedVoiceIndex]) u.voice = voices[state.selectedVoiceIndex]; 
     u.rate = state.voiceRate; 
     window.speechSynthesis.speak(u); 
 }
-function stopAudio() { 
-    state.isLooping = false; 
-    clearInterval(loopInterval); 
-    window.speechSynthesis.cancel(); 
-    render(); 
-}
+function stopAudio() { state.isLooping = false; clearInterval(loopInterval); window.speechSynthesis.cancel(); render(); }
 function toggleLoop() { 
-    if (state.isLooping) {
-        stopAudio(); 
-    } else { 
-        state.isLooping = true; 
-        render(); 
-        const t = state.data[state.currentIndex].commute_content.french_text; 
-        speak(t); 
-        loopInterval = setInterval(() => { if (!window.speechSynthesis.speaking) speak(t); }, 3000); 
+    if (state.isLooping) stopAudio(); 
+    else { 
+        state.isLooping = true; render(); speak(state.data[state.currentIndex].commute_content.french_text); 
+        loopInterval = setInterval(() => { if (!window.speechSynthesis.speaking) speak(state.data[state.currentIndex].commute_content.french_text); }, 3000); 
     } 
 }
 
 function startDictation(target, resId, btnId) {
-    if (!recognition) { alert("Mic not supported."); return; }
+    if (!recognition) return alert("Mic not supported.");
     const btn = document.getElementById(btnId); const res = document.getElementById(resId);
-    btn.classList.add('listening'); res.innerHTML = "Listening..."; res.classList.remove('hidden');
-    recognition.lang = 'fr-FR'; // Ensure French
+    btn.classList.add('listening'); res.innerHTML = "Écoute..."; res.classList.remove('hidden');
     recognition.start();
     recognition.onresult = (e) => {
-        const transcript = e.results[0][0].transcript;
-        const feedback = analyzeSpeech(target, transcript);
+        const input = e.results[0][0].transcript;
+        const feedback = analyzeSpeech(target, input);
         res.innerHTML = feedback.html;
-        btn.classList.remove('listening');
-        if(feedback.score === 100) {
-            const item = state.data[state.currentIndex];
-            if(!item.progress.speak) {
-                item.progress.speak = true;
-                saveData();
-                render(); 
-                alert("🎉 Très bien! 'Speak' marked as done.");
-            }
-        }
     };
     recognition.onend = () => btn.classList.remove('listening');
 }
 
 function analyzeSpeech(target, input) {
-    const clean = (s) => s.toLowerCase().replace(/[.,?!]/g, "").split(/\s+/);
-    const tWords = clean(target); const iWords = clean(input);
-    let html = ""; let matchedCount = 0;
-    tWords.forEach(word => {
-        if (iWords.includes(word)) { html += `<span style="color:var(--success);font-weight:bold">${word}</span> `; matchedCount++; iWords.splice(iWords.indexOf(word), 1); } 
-        else { html += `<span style="color:var(--danger);text-decoration:line-through;opacity:0.7">${word}</span> `; }
+    // フランス語はアポストロフィ(l'eau)が重要なので残すロジックに変更
+    const clean = (s) => s.toLowerCase().replace(/[.,?!]/g, "").split(/\s+/).filter(x => x.length > 0);
+    const tWords = clean(target), iWords = clean(input);
+    let html = "", matched = 0;
+    tWords.forEach(w => {
+        if (iWords.includes(w)) { html += `<span class="word-ok">${w}</span> `; matched++; iWords.splice(iWords.indexOf(w), 1); }
+        else html += `<span class="word-miss">${w}</span> `;
     });
-    const score = Math.round((matchedCount / tWords.length) * 100);
-    const color = score === 100 ? "#10b981" : (score > 60 ? "#f59e0b" : "#ef4444");
-    return {
-        score: score,
-        html: `<div class="score-display" style="color:${color};font-weight:bold;font-size:1.1rem">Score: ${score}%</div><div>${html}</div><div style="font-size:0.8rem;color:gray;margin-top:5px">Vous avez dit: "${input}"</div>`
-    };
+    const score = Math.round((matched / tWords.length) * 100);
+    return { score, html: `<div style="font-weight:bold; color:${score===100?'var(--success)':'var(--accent)'}">Score: ${score}%</div>${html}<div style="font-size:0.8rem;color:gray;">Dit: "${input}"</div>` };
 }
 
+// --- TEST FUNCTION ---
+function startTest() {
+    const completed = state.data.filter(d => d.progress.listen || d.progress.speak);
+    if (completed.length === 0) return alert("D'abord, apprenez quelques leçons !\nまずは学習チェックをつけてください。");
+    state.testQueue = [...completed].sort(() => Math.random() - 0.5);
+    state.testIndex = 0;
+    state.mode = 'test';
+    render();
+}
+
+// --- RENDERING ---
 function render() {
     const app = document.getElementById('app-content');
-    document.querySelector('.bottom-nav').style.display = (state.mode === 'lesson') ? 'none' : 'flex';
-
-    if (state.mode === 'list') renderList(app);
-    else if (state.mode === 'settings') renderSettings(app);
+    const nav = document.querySelector('.bottom-nav');
+    nav.style.display = (state.mode === 'lesson' || state.mode === 'test') ? 'none' : 'flex';
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    
+    if (state.mode === 'list') { document.getElementById('nav-list').classList.add('active'); renderList(app); }
+    else if (state.mode === 'settings') { document.getElementById('nav-config').classList.add('active'); renderSettings(app); }
     else if (state.mode === 'lesson') renderLesson(app);
+    else if (state.mode === 'test') { document.getElementById('nav-test').classList.add('active'); renderTest(app); }
 }
 
 function renderList(c) {
-    if (state.data.length === 0) { c.innerHTML = '<div style="text-align:center;padding:20px;color:var(--subtext)">No Data.<br>Go to Config to reset.</div>'; return; }
-    
-    let html = `<div style="padding-bottom:20px;">`;
-    state.data.forEach((d, i) => {
-        const listenClass = d.progress.listen ? 'done' : '';
-        const speakClass = d.progress.speak ? 'done' : '';
-        const level = d.level || 'General';
-        
-        html += `
+    if (state.data.length === 0) { c.innerHTML = '<div style="text-align:center;padding:40px;color:var(--subtext)">Aucune leçon.<br>Ajoutez-en dans Config !</div>'; return; }
+    c.innerHTML = state.data.map((d, i) => `
         <div class="list-item" onclick="openLesson(${i})">
             <div class="list-content">
                 <div class="list-summary">${d.commute_content.summary}</div>
                 <div class="list-meta">
                     <span class="cat-tag cat-${d.category}">${d.category}</span>
-                    <span class="level-tag">${level}</span>
+                    <span class="level-tag">${d.level}</span>
                     <div class="progress-badges">
-                        <span class="p-badge ${listenClass}">🎧 Listen</span>
-                        <span class="p-badge ${speakClass}">🗣️ Speak</span>
+                        <span class="p-badge ${d.progress.listen?'done':''}">🎧</span>
+                        <span class="p-badge ${d.progress.speak?'done':''}">🗣️</span>
                     </div>
                 </div>
             </div>
-            <div style="color:var(--subtext)">›</div>
-        </div>`;
-    });
-    html += `</div>`;
-    c.innerHTML = html;
+            <span>›</span>
+        </div>`).join('');
 }
 
 function renderLesson(c) {
     const d = state.data[state.currentIndex];
     const isListen = state.lessonTab === 'commute';
-    
-    let html = `
-    <div class="lesson-header">
-        <button class="btn-outline" onclick="setMode('list')" style="width:auto;padding:5px 10px;font-size:0.8rem">← Liste</button>
-        <div style="font-weight:bold">${d.commute_content.summary}</div>
-        <div style="width:50px"></div>
+    c.innerHTML = `
+    <div class="lesson-header"><button class="btn-outline" onclick="setMode('list')" style="width:auto;padding:5px 10px;">← Retour</button><div style="font-weight:bold">${d.commute_content.summary}</div><div style="width:50px"></div></div>
+    <div class="lesson-tabs"><div class="l-tab ${isListen?'active':''}" onclick="setLessonTab('commute')">🎧 Écoute</div><div class="l-tab ${!isListen?'active':''}" onclick="setLessonTab('practice')">🗣️ Pratique</div></div>
+    <div class="card">
+        <button class="btn ${d.progress[isListen?'listen':'speak']?'btn-success':'btn-outline'}" onclick="toggleProgress('${isListen?'listen':'speak'}')">${d.progress[isListen?'listen':'speak']?'✅ Terminé':'⬜ Marquer comme fait'}</button>
+        ${isListen ? renderListenContent(d) : renderSpeakContent(d)}
     </div>
-
-    <div class="lesson-tabs">
-        <div class="l-tab ${isListen?'active':''}" onclick="setLessonTab('commute')">🎧 Commute</div>
-        <div class="l-tab ${!isListen?'active':''}" onclick="setLessonTab('practice')">🗣️ Practice</div>
-    </div>
-    `;
-
-    html += `<div class="card">`;
-    
-    if (isListen) {
-        html += `
-            <div class="lesson-content active">
-                <div style="margin-bottom:15px">
-                    <button class="btn ${d.progress.listen ? 'btn-success' : 'btn-outline'}" onclick="toggleProgress('listen')">
-                        ${d.progress.listen ? '✅ Terminé (Ecoute)' : '⬜ Marquer comme lu'}
-                    </button>
-                </div>
-
-                <div style="display:flex;gap:10px;margin-bottom:10px">
-                    <button class="btn" onclick="speak('${d.commute_content.french_text.replace(/'/g,"\\'")}')">▶️ Jouer</button>
-                    <button class="btn ${state.isLooping?'btn-accent':'btn-outline'}" onclick="toggleLoop()">${state.isLooping?'🔁 Boucle On':'🔁 Boucle'}</button>
-                </div>
-                
-                <div class="slider-container">
-                    <span style="font-size:0.8rem;width:40px">Vit.</span>
-                    <input type="range" min="0.5" max="1.2" step="0.1" value="${state.voiceRate}" oninput="state.voiceRate=this.value; localStorage.setItem('lf_voice_rate', this.value); this.nextElementSibling.innerText=this.value+'x'">
-                    <span style="font-size:0.8rem;width:30px">${state.voiceRate}x</span>
-                </div>
-
-                <div id="txt-area" class="${state.showText?'':'hidden'}">
-                    <div class="text-fr">${d.commute_content.french_text}</div>
-                    <div class="text-jp">${d.commute_content.japanese_translation}</div>
-                    <hr style="border:0;border-top:1px dashed var(--border);margin:15px 0">
-                    <div class="chunk-view">${d.commute_content.chunks.split('/').map(c=>`<span>${c}</span><span class="chunk-sep">/</span>`).join('')}</div>
-                </div>
-                
-                <button class="btn-outline" style="margin-top:15px;width:100%" onclick="state.showText=!state.showText;render()">
-                    ${state.showText ? '🙈 Cacher le texte' : '👁️ Voir le texte'}
-                </button>
-            </div>
-        `;
-    } else {
-        html += `
-            <div class="lesson-content active">
-                <div style="margin-bottom:15px">
-                    <button class="btn ${d.progress.speak ? 'btn-success' : 'btn-outline'}" onclick="toggleProgress('speak')">
-                        ${d.progress.speak ? '✅ Terminé (Parler)' : '⬜ Marquer comme fait'}
-                    </button>
-                </div>
-
-                <div class="pattern-box">
-                    <div style="font-size:0.8rem;color:var(--subtext)">KEY PATTERN</div>
-                    <div class="pattern-key">${d.home_content.pattern_focus}</div>
-                    <div style="font-size:0.9rem">${d.home_content.pattern_explanation}</div>
-                </div>
-        `;
-        
-        d.home_content.drills.forEach((q, i) => {
-            const safeFr = q.french.replace(/'/g, "\\'");
-            html += `
-                <div class="drill-card">
-                    <div style="font-weight:bold;margin-bottom:8px">${i+1}. ${q.japanese}</div>
-                    <div style="display:flex;gap:10px">
-                        <button class="btn btn-mic" id="btn-mic-${i}" onclick="startDictation('${safeFr}', 'res-${i}', 'btn-mic-${i}')" style="flex:1">🎙️ Parler</button>
-                        <button class="btn btn-accent" onclick="document.getElementById('ans-${i}').classList.remove('hidden')" style="width:60px">👀</button>
-                    </div>
-                    <div id="res-${i}" class="hidden score-box"></div>
-                    <div id="ans-${i}" class="hidden" style="margin-top:5px;color:var(--primary);font-weight:bold">${q.french}</div>
-                </div>
-            `;
-        });
-        html += `</div>`;
-    }
-
-    html += `</div>`; 
-    
-    html += `
     <div style="display:flex;justify-content:space-between;margin-top:20px">
-        <button class="btn-outline" style="width:45%" onclick="if(state.currentIndex>0) openLesson(state.currentIndex-1)" ${state.currentIndex===0?'disabled':''}>← Préc.</button>
-        <button class="btn-outline" style="width:45%" onclick="if(state.currentIndex<state.data.length-1) openLesson(state.currentIndex+1)" ${state.currentIndex===state.data.length-1?'disabled':''}>Suiv. →</button>
-    </div>
-    `;
+        <button class="btn-outline" style="width:45%" onclick="if(state.currentIndex>0) openLesson(state.currentIndex-1)" ${state.currentIndex===0?'disabled':''}>← Préc</button>
+        <button class="btn-outline" style="width:45%" onclick="if(state.currentIndex<state.data.length-1) openLesson(state.currentIndex+1)" ${state.currentIndex===state.data.length-1?'disabled':''}>Suiv →</button>
+    </div>`;
+}
 
-    c.innerHTML = html;
+function renderListenContent(d) {
+    return `
+    <div style="margin-top:15px; display:flex; gap:10px;"><button class="btn" onclick="speak(state.data[state.currentIndex].commute_content.french_text)">▶️ Jouer</button><button class="btn ${state.isLooping?'btn-accent':'btn-outline'}" onclick="toggleLoop()">${state.isLooping?'🔁 Arrêt':'🔁 Boucle'}</button></div>
+    <div id="txt-area" class="${state.showText?'':'hidden'}"><div class="text-fr">${d.commute_content.french_text}</div><div class="text-jp">${d.commute_content.japanese_translation}</div><div class="chunk-view" style="margin-top:10px;border-top:1px dashed var(--border);padding-top:10px;">${d.commute_content.chunks.split('/').map(c=>`<span>${c}</span><span class="chunk-sep">/</span>`).join('')}</div></div>
+    <button class="btn-outline" style="margin-top:15px;" onclick="state.showText=!state.showText;render()">${state.showText?'🙈 Cacher':'👁️ Montrer'} Texte</button>`;
+}
+
+function renderSpeakContent(d) {
+    const safeFr = (t) => t.replace(/'/g, "\\'");
+    return `
+    <div class="pattern-box" style="margin-top:15px;"><div class="pattern-key">${d.home_content.pattern_focus}</div><div style="font-size:0.85rem;">${d.home_content.pattern_explanation}</div></div>
+    ${d.home_content.drills.map((q, i) => `
+        <div class="drill-card">
+            <div style="font-weight:bold; font-size:0.9rem; margin-bottom:8px;">${i+1}. ${q.japanese}</div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn btn-mic" id="btn-mic-${i}" onclick="startDictation('${safeFr(q.french)}', 'res-${i}', 'btn-mic-${i}')" style="flex:1">🎙️ Parler</button>
+                <button class="btn btn-accent" onclick="speak('${safeFr(q.french)}')" style="width:40px; padding:0;">🔊</button>
+                <button class="btn btn-accent" onclick="document.getElementById('ans-${i}').classList.toggle('hidden')" style="width:40px; padding:0;">👀</button>
+            </div>
+            <div id="res-${i}" class="hidden score-box"></div><div id="ans-${i}" class="hidden" style="margin-top:8px; color:var(--primary); font-weight:bold;">${q.french}</div>
+        </div>`).join('')}`;
+}
+
+function renderTest(c) {
+    const d = state.testQueue[state.testIndex];
+    const safeFr = d.commute_content.french_text.replace(/'/g, "\\'");
+    let nextBtnHTML = state.testIndex < state.testQueue.length - 1 ? `<button class="btn-outline" onclick="state.testIndex++; render()" style="flex:1">Suivant →</button>` : `<button class="btn-success" onclick="alert('Bravo !'); setMode('list')" style="flex:1">Finir</button>`;
+    
+    c.innerHTML = `
+    <div class="lesson-header"><button class="btn-outline" onclick="setMode('list')" style="width:auto;padding:5px 10px;">✕ Quitter</button><div style="font-weight:bold">Test (${state.testIndex+1}/${state.testQueue.length})</div><div style="width:50px"></div></div>
+    <div class="card" style="text-align:center; padding:30px 20px;">
+        <div style="color:var(--subtext); font-size:0.8rem; margin-bottom:10px;">Traduisez en français:</div>
+        <div style="font-size:1.1rem; font-weight:bold; margin-bottom:20px;">${d.commute_content.japanese_translation}</div>
+        <div style="display:flex; gap:10px; margin-bottom:20px;">
+             <button class="btn btn-mic" id="btn-test-mic" onclick="startDictation('${safeFr}', 'res-test', 'btn-test-mic')" style="flex:1">🎙️ Parler</button>
+             <button class="btn btn-accent" onclick="speak('${safeFr}')" style="width:60px;">🔊</button>
+        </div>
+        <div id="res-test" class="hidden score-box" style="margin-bottom:15px;"></div>
+        <div id="ans-test" class="hidden" style="padding:15px; background:var(--bg); border-radius:8px; border:1px solid var(--border);"><div class="text-fr" style="margin:0; font-size:1rem;">${d.commute_content.french_text}</div></div>
+    </div>
+    <div style="display:flex; gap:10px;"><button class="btn" onclick="document.getElementById('ans-test').classList.remove('hidden')" style="flex:1">👁️ Réponse</button>${nextBtnHTML}</div>`;
 }
 
 function updatePrompt() {
-    state.promptTopic = document.getElementById('p-topic').value || "General";
-    state.promptMode = document.getElementById('p-mode').value;
-    state.promptLevel = document.getElementById('p-level').value;
-    state.promptQty = document.getElementById('p-qty').value;
+    const topic = document.getElementById('p-topic')?.value || "Travel";
+    const level = document.getElementById('p-level')?.value || "Beginner";
+    const qty = document.getElementById('p-qty')?.value || 3;
+    const customText = document.getElementById('p-custom-text')?.value.trim() || "";
     
-    const customText = document.getElementById('p-custom-text').value.trim();
-    let baseInstruction = "";
-    
-    if (customText) {
-        baseInstruction = `## タスク: テキスト解析モード\n以下のフランス語文を学習データ化してください。\n\n対象文:\n"${customText}"\n\n【重要】この文を一字一句変更せず、そのまま \`french_text\` に格納し、それを \`chunks\` に分割してください。`;
-    } else {
-        let modeDetail = "";
-        if (state.promptMode === "business") modeDetail = "- 場面：オフィス、会議、交渉。";
-        else if (state.promptMode === "travel") modeDetail = "- 場面：旅行トラブル、注文。";
-        else if (state.promptMode === "grammar") modeDetail = "- 特定の文法（複合過去、半過去、接続法など）を強調。";
-        
-        baseInstruction = `## タスク: フランス語生成モード\nテーマ: ${state.promptTopic}\nレベル: ${state.promptLevel}\n作成数: ${state.promptQty}つ\n${modeDetail}\n- 上記設定に基づき、自然なフランス語文を作成してください。`;
-    }
+    let instruction = customText 
+        ? `## 解析モード\n以下のフランス語を学習データ化してください：\n"${customText}"\n【重要】french_textは一字一句変えず、完璧にchunksへ分割してください。`
+        : `## 生成モード\nテーマ: ${topic}\nレベル: ${level}\n作成数: ${qty}つ\n自然なフランス語(France)で作成してください。`;
 
-    const p = `あなたはフランス語教育のプロです。以下の仕様で学習データを作成してください。
-
-${baseInstruction}
-
+    const p = `あなたはフランス語教材作成のプロです。以下の仕様で学習データを作成してください。
+${instruction}
 ## 【絶対遵守ルール】
-1. **原文維持**: \`french_text\` の単語、記号を勝手に削除・変更してはいけません。
-2. **完全復元性**: \`chunks\` を連結すると、\`french_text\` と一字一句完全に一致しなければなりません。
-3. **出力形式**: **指定された数量(${state.promptQty}つ)のデータ**を含む、以下のJSON配列のみを出力してください。
-
+1. 出力は以下のJSON配列形式のみ。
+2. french_text と chunks の連結結果は完全一致させること。
 \`\`\`json
 [
   {
-    "id": "fr_gen_${Math.floor(Math.random()*1000)}", 
-    "category": "${state.promptTopic}",
-    "level": "${state.promptLevel}",
+    "id": "gen_${Date.now()}", 
+    "category": "${topic}",
+    "level": "${level}",
     "progress": { "listen": false, "speak": false },
-    "commute_content": {
-      "french_text": "フランス語文",
-      "japanese_translation": "和訳",
-      "chunks": "chunk / chunk / chunk", 
-      "summary": "要約",
-      "vocabulary": [{ "word": "単語", "meaning": "意味" }]
+    "commute_content": { 
+      "french_text": "...", "japanese_translation": "...", "chunks": "... / ...", "summary": "...", "vocabulary": [] 
     },
-    "home_content": {
-      "pattern_focus": "重要構文", "pattern_explanation": "解説",
-      "drills": [
-        { "japanese": "和訳", "french": "仏文(Apply)" },
-        { "japanese": "和訳", "french": "仏文(Apply)" }
-      ]
+    "home_content": { 
+      "pattern_focus": "...", "pattern_explanation": "...", "drills": [{"japanese": "...", "french": "..."}] 
     }
-  },
-  // ... (指定された数だけ繰り返す) ...
+  }
 ]
-\`\`\`
-`;
-    document.getElementById('p-area').value = p;
+\`\`\``;
+    const area = document.getElementById('p-area');
+    if (area) area.value = p;
 }
 
-function copyPrompt() { updatePrompt(); navigator.clipboard.writeText(document.getElementById('p-area').value).then(() => alert('Prompt Copied!')); }
-function downloadData() { const blob = new Blob([JSON.stringify(state.data, null, 2)], { type: "application/json" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `link_french_backup.json`; a.click(); }
-function copyData() { navigator.clipboard.writeText(JSON.stringify(state.data, null, 2)).then(() => alert('Copied!')); }
+function copyPrompt() { updatePrompt(); navigator.clipboard.writeText(document.getElementById('p-area').value).then(() => alert('Copied!')); }
 function loadJsonData() { 
     try { 
         const d = JSON.parse(document.getElementById('data-input').value); 
         if (Array.isArray(d)) { 
-            d.forEach(x => { if(!x.progress) x.progress = {listen:false, speak:false}; });
-            if (confirm('Ajouter? (Annuler pour Remplacer)')) state.data = [...state.data, ...d]; else state.data = d; 
-            saveData(); alert('Chargé!'); setMode('list'); 
-        } else alert('Invalid JSON'); 
-    } catch(e) { alert('Error: '+e.message); } 
+            if (confirm('Ajouter aux données existantes ?')) state.data = [...state.data, ...d]; else state.data = d; 
+            saveData(); setMode('list'); 
+        }
+    } catch(e) { alert('Invalid JSON'); } 
 }
-function resetData() { if(confirm('Reset to Starter Pack?')) { localStorage.removeItem('lf_data'); location.reload(); } }
 
 function renderSettings(c) {
-    let opts = "";
-    if (voices.length > 0) {
-         opts = voices.map((v,i)=>`<option value="${i}" ${i==state.selectedVoiceIndex?'selected':''}>${v.name} (${v.lang})</option>`).join('');
-    } else {
-         opts = "<option>Loading voices... or No French Voice</option>";
-    }
-    
+    const voiceOpts = voices.map((v,i)=>`<option value="${i}" ${i==state.selectedVoiceIndex?'selected':''}>${v.name}</option>`).join('');
     c.innerHTML = `
     <div class="card">
-        <h2>🤖 AI Prompt Builder (Français)</h2>
-        <div style="margin-bottom:15px; border-bottom:1px dashed var(--border); padding-bottom:15px;">
-            <label style="color:var(--primary); font-size:0.9rem;">Option A: Custom Text (Paste here)</label>
-            <textarea id="p-custom-text" placeholder="Collez le texte français ici..." style="height:60px;" oninput="updatePrompt()"></textarea>
+        <h2>🤖 AI Prompt Builder (French)</h2>
+        <label>Option A: Custom Text (Paste French)</label>
+        <textarea id="p-custom-text" oninput="updatePrompt()"></textarea>
+        <div style="margin:15px 0; border-top:1px dashed var(--border);"></div>
+        <label>Option B: Topic</label>
+        <input type="text" id="p-topic" value="${state.promptTopic}" oninput="updatePrompt()">
+        <div class="form-row" style="margin-top:10px;">
+            <div class="form-col"><label>Level</label><select id="p-level" onchange="updatePrompt()"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+            <div class="form-col" style="flex:0 0 70px;"><label>Qty</label><input type="number" id="p-qty" value="${state.promptQty}" oninput="updatePrompt()"></div>
         </div>
-        <div style="margin-bottom:10px">
-            <label>Option B: Generate by Topic</label>
-            <input type="text" id="p-topic" value="${state.promptTopic}" oninput="updatePrompt()">
-        </div>
-        <div class="form-row">
-            <div class="form-col"><label>Mode</label><select id="p-mode" onchange="updatePrompt()"><option value="standard">Standard</option><option value="business">Business</option><option value="grammar">Grammar</option><option value="travel">Travel</option></select></div>
-            <div class="form-col"><label>Level</label><select id="p-level" onchange="updatePrompt()"><option value="Intermediate">Intermédiaire</option><option value="Advanced">Avancé</option><option value="Beginner">Débutant</option></select></div>
-            <div class="form-col" style="flex:0 0 60px"><label>Qty</label><input type="number" id="p-qty" value="${state.promptQty}" min="1" max="10" oninput="updatePrompt()"></div>
-        </div>
-        <textarea id="p-area" style="font-size:0.7rem;color:var(--subtext);margin-bottom:10px" readonly></textarea>
-        <button class="btn btn-outline" onclick="copyPrompt()">📋 Copier Prompt</button>
+        <textarea id="p-area" style="font-size:0.65rem; height:100px; margin-top:15px;" readonly></textarea>
+        <button class="btn btn-outline" onclick="copyPrompt()">📋 Copy Prompt</button>
     </div>
     <div class="card">
-        <h2>Données & Voix</h2>
-        <div style="display:flex;gap:10px;margin-bottom:10px"><button class="btn" onclick="downloadData()">💾 Sauvegarder</button><button class="btn btn-outline" onclick="copyData()">📋 Copier</button></div>
-        <textarea id="data-input" placeholder='Paste JSON here...' style="height:60px;"></textarea>
-        <button class="btn" onclick="loadJsonData()" style="margin-top:10px">Charger JSON</button>
-        <div style="margin-top:20px"><label>Voix (Synthèse)</label><select onchange="state.selectedVoiceIndex=this.value;localStorage.setItem('lf_voice_index',this.value); speak('Bonjour');">${opts}</select></div>
-        <p style="font-size:0.8rem;color:gray;margin-top:5px">Note: Si aucune voix n'apparaît, installez "Données vocales Google (Français)" dans les paramètres Android.</p>
-    </div>
-    <div class="card"><button class="btn btn-outline" onclick="resetData()">⚠️ Reset to Starter Pack</button></div>`;
-    setTimeout(updatePrompt, 0); 
+        <h2>Data & Voice</h2>
+        <textarea id="data-input" placeholder="Paste JSON from Gemini here..."></textarea>
+        <button class="btn" onclick="loadJsonData()" style="margin-top:10px;">Load Data</button>
+        <div style="margin-top:20px;"><label>Voice</label><select onchange="state.selectedVoiceIndex=this.value;localStorage.setItem('lf_voice_index',this.value)">${voiceOpts}</select></div>
+        <button class="btn-outline" onclick="localStorage.removeItem('lf_data'); location.reload();" style="margin-top:20px; border-color:var(--danger); color:var(--danger);">⚠️ Reset All Data</button>
+    </div>`;
+    setTimeout(updatePrompt, 50);
 }
 
 init();
